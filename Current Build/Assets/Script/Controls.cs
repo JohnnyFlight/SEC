@@ -24,9 +24,10 @@ public class Controls : MonoBehaviour
 	float AttackSpeed = 0f;
 
 	Vector3 Accelaration;
-	Vector3 ShipVelocity;
+	public Vector3 ShipVelocity;
+	Vector3 TempVelocity;
 
-	bool Shooting = false;
+	bool Moveing = false;
 
 	// Use this for initialization
 	void Start () 
@@ -52,6 +53,7 @@ public class Controls : MonoBehaviour
 		ObjectRot.z = Angle;
 		this.gameObject.transform.eulerAngles = ObjectRot;
 
+// Controls ////////////////////////////////////////////
 		if (Input.GetKey (KeyCode.Mouse1) == true) 
 		{
 			ObjectPos.y += Mathf.Sin(Angle*Mathf.Deg2Rad)*Velocity;
@@ -61,16 +63,68 @@ public class Controls : MonoBehaviour
 			//ObjectPos += NormalRotation*Velocity*Time.deltaTime;
 			this.gameObject.transform.position = ObjectPos;
 		}
-
 		if (Input.GetKey (KeyCode.A))
 		{
 			Accelaration = this.gameObject.transform.right * (Time.deltaTime + MovementSpeed);
-			ShipVelocity += Accelaration;
+			Moveing = true;
+		}
+		else
+		{
+			Moveing = false;
+		}
+/////////////////////////////////////////////////////////
+
+		if (Moveing == true)
+		{
+			if (ShipVelocity.x < 1 && ShipVelocity.x > -1 && ShipVelocity.y < 1 && ShipVelocity.y > -1)
+			{
+				ShipVelocity += Accelaration;
+			}
+			else
+			{
+				ShipVelocity -= Accelaration;
+			}
 		}
 
-		Vector3 temp = gameObject.transform.position += ShipVelocity;
+		if (Moveing == false)
+		{
+			if (ShipVelocity.x > 1 && ShipVelocity.x < -1 && ShipVelocity.y > 1 && ShipVelocity.y < -1)
+			{
+				ShipVelocity -= Accelaration;
+			}
+		}
 
-		gameObject.transform.position = temp;
+		TempVelocity = gameObject.transform.position += ShipVelocity;
+		gameObject.transform.position = TempVelocity;
+
+
+// Bounding Box ////////////////////////////////////////
+		if (ObjectPos.x >= 35) 
+		{
+			ObjectPos.x = -30;
+			ObjectPos.y = ObjectPos.y * -1;
+			gameObject.transform.position = ObjectPos;
+		}
+		else if (ObjectPos.x <= -35)
+		{
+			ObjectPos.x = 30;
+			ObjectPos.y = ObjectPos.y * -1;
+			gameObject.transform.position = ObjectPos;
+		}
+
+		if (ObjectPos.y >= 25) 
+		{
+			ObjectPos.y = -20;
+			ObjectPos.x = ObjectPos.x * -1;
+			gameObject.transform.position = ObjectPos;
+		}
+		else if (ObjectPos.y <= -25)
+		{
+			ObjectPos.y = 20;
+			ObjectPos.x = ObjectPos.x * -1;
+			gameObject.transform.position = ObjectPos;
+		}
+////////////////////////////////////////////////////////
 	}
 
 	void Get_Angle()

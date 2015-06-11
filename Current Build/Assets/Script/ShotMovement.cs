@@ -48,6 +48,30 @@ public class ShotMovement : MonoBehaviour {
 		ShotVelocity += Acceleration;
 		Vector3 temp = this.gameObject.transform.position += ShotVelocity;
 		this.gameObject.transform.position = temp;
+
+		// Bounding Box ////////////////////////////////////////
+		if (this.gameObject.transform.position.x >= 35) 
+		{
+			Destroy(this.gameObject);
+			print("shot deleted");
+		}
+		else if (this.gameObject.transform.position.x <= -35)
+		{
+			Destroy(this.gameObject);
+			print("shot deleted");
+		}
+		
+		if (this.gameObject.transform.position.y >= 25) 
+		{
+			Destroy(this.gameObject);
+			print("shot deleted");
+		}
+		else if (this.gameObject.transform.position.y <= -25)
+		{
+			Destroy(this.gameObject);
+			print("shot deleted");
+		}
+		////////////////////////////////////////////////////////
 	}
 
 	void Get_Angle()
