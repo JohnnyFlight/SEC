@@ -12,10 +12,13 @@ public class Asteroid : MonoBehaviour
 	public const float kDefaultHealth = 0.0f;
 	public const Size kDefaultSize = Size.Large;
 
-	public const float kDefaultVelocity = 5.0f;
+	public const float kDefaultVelocity = 25.0f;
 
 	public const float kCubeRoot2 = 1.25992104989f;
 	public const float kCubeRoot3 = 1.44224957031f;
+
+	//	Otherwise split 2
+	public const float kThreeBreakPercentage = 30.0f;
 	
 	[SerializeField] protected float _health = kDefaultHealth;
 	public float health
@@ -79,12 +82,18 @@ public class Asteroid : MonoBehaviour
 					break;
 				case Size.Medium:
 					//	Create two smalls
-					split(2, Asteroid.Size.Small);
+					if (Random.Range(0.0f, 100.0f) < kThreeBreakPercentage)
+						split(2, Asteroid.Size.Small);
+					else
+						split(3, Asteroid.Size.Small);
 					break;
 				case Size.Large:
-					//	Create two mediums
+				//	Create two mediums
+				if (Random.Range(0.0f, 100.0f) < kThreeBreakPercentage)
+					split(2, Asteroid.Size.Medium);
+				else
 					split(3, Asteroid.Size.Medium);
-					break;
+				break;
 			}
 		}
 	}
@@ -93,6 +102,16 @@ public class Asteroid : MonoBehaviour
 	{
 		Debug.Log(this + "clicked.");
 		_health -= 25.0f;
+	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		print (col.collider.gameObject.tag);
+		if (col.collider.gameObject.tag == "Bullet")
+		{
+			Destroy (col.collider.gameObject);
+			_health -= 25.0f;
+		}
 	}
 
 	private void split(uint number, Asteroid.Size s)
@@ -114,7 +133,12 @@ public class Asteroid : MonoBehaviour
 			//	Create instance
 			go = ((Transform)Instantiate(AsteroidPrefabs.instance.getPrefab(), this.transform.position, rotation)).gameObject;
 			go.transform.localScale = this.transform.localScale / scaleFactor;
-			go.transform.position += go.transform.right * 2.0f;
+
+			Vector3 position = go.transform.position;
+			position += go.transform.right * 2.0f;
+			position.z = 0.0f;
+			go.transform.position = position;
+
 			go.GetComponent<Asteroid>().size = s;
 
 			rotation *= q;
