@@ -72,6 +72,7 @@ public class ShotMovement : MonoBehaviour {
 			print("shot deleted");
 		}
 		////////////////////////////////////////////////////////
+
 	}
 
 	void Get_Angle()
@@ -80,5 +81,18 @@ public class ShotMovement : MonoBehaviour {
 		WidthDif = Input.mousePosition.x - ObjectX;
 		Angle = Mathf.Atan2(HeightDif, WidthDif);
 		Angle *= 180 / Mathf.PI;
+	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag == "Ship") 
+		{
+
+		} 
+		else 
+		{
+			Destroy (this.gameObject);
+			print ("shot deleted");
+		}
 	}
 }
