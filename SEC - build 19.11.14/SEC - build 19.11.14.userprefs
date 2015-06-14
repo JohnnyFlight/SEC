@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\Current Build\Assets\Script\Asteroid.cs">
     <Files>
-      <File FileName="..\Current Build\Assets\Script\Asteroid.cs" Line="118" Column="4" />
+      <File FileName="..\Current Build\Assets\Script\Asteroid.cs" Line="95" Column="37" />
+      <File FileName="..\Current Build\Assets\Script\AsteroidManager.cs" Line="57" Column="41" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

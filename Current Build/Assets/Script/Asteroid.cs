@@ -5,7 +5,7 @@ public class Asteroid : MonoBehaviour
 {
 	public enum Size { Small, Medium, Large }
 
-	public const float kDefaultSmallHealth = 25.0f;
+	public const float kDefaultSmallHealth = 20.0f;
 	public const float kDefaultMediumHealth = 50.0f;
 	public const float kDefaultLargeHealth = 100.0f;
 
@@ -16,6 +16,8 @@ public class Asteroid : MonoBehaviour
 
 	public const float kCubeRoot2 = 1.25992104989f;
 	public const float kCubeRoot3 = 1.44224957031f;
+
+	private float[] _unforcedDamage = { 30.0f, 50.0f, 70.0f };
 
 	//	Otherwise split 2
 	public const float kThreeBreakPercentage = 30.0f;
@@ -35,6 +37,7 @@ public class Asteroid : MonoBehaviour
 		set { _velocity = value; }
 	}
 
+	[SerializeField] private bool _forcedMovement = false;
 
 	public Size size
 	{
@@ -106,11 +109,21 @@ public class Asteroid : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		print (col.collider.gameObject.tag);
-		if (col.collider.gameObject.tag == "Bullet")
+		print (col.gameObject.tag);
+		if (col.gameObject.tag == "Bullet")
 		{
-			Destroy (col.collider.gameObject);
-			_health -= 25.0f;
+			//	Get vector from collider to asteroid
+			Vector3 direction = this.transform.position - col.transform.position;
+			this.GetComponent<Rigidbody>().AddForce(direction.normalized, ForceMode.Impulse);
+
+			_health -= 10.0f;
+		}
+		else if (col.gameObject.tag == "Asteroid")
+		{
+			if (_forcedMovement == true)
+			{
+				//	Do damage to both asteroids
+			}
 		}
 	}
 
