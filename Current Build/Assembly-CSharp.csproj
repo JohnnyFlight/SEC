@@ -49,8 +49,12 @@
      <Compile Include="Assets\Script\Asteroid.cs" />
      <Compile Include="Assets\Script\AsteroidManager.cs" />
      <Compile Include="Assets\Script\AsteroidPrefabs.cs" />
+     <Compile Include="Assets\Script\Attractor.cs" />
      <Compile Include="Assets\Script\Controls.cs" />
      <Compile Include="Assets\Script\Gun_Controls.cs" />
+     <Compile Include="Assets\Script\LevelManager.cs" />
+     <Compile Include="Assets\Script\Resource.cs" />
+     <Compile Include="Assets\Script\ResourcePickup.cs" />
      <Compile Include="Assets\Script\ShipTest.cs" />
      <Compile Include="Assets\Script\ShotMovement.cs" />
  <Reference Include="UnityEngine.UI">
