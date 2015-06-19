@@ -81,4 +81,17 @@ public class ShotMovement : MonoBehaviour {
 		Angle = Mathf.Atan2(HeightDif, WidthDif);
 		Angle *= 180 / Mathf.PI;
 	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag == "Player") 
+		{
+			
+		} 
+		else 
+		{
+			Destroy (this.gameObject);
+			print ("shot deleted");
+		}
+	}
 }
