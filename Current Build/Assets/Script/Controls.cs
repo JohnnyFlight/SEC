@@ -14,26 +14,23 @@ public class Controls : MonoBehaviour
 	public float ObjectX;
 	public float CameraX;
 	public float CameraY;
-	public float Speed;
 	public float MaxSpeed;
 	public float FireRate;
 
 	// variables for storeing/manipulating
-	float MovementSpeed = 0f;
 	float MovementLimit = 0f;
 	float AttackSpeed = 0f;
 
-	Vector3 Accelaration;
+	public Vector3 Accelaration;
 	public Vector3 ShipVelocity;
 	Vector3 TempVelocity;
 
-	bool Moveing = false;
+	public bool Moveing = false;
 
 	// Use this for initialization
 	void Start () 
 	{
 		MovementLimit = MaxSpeed;
-		MovementSpeed = Speed;
 		AttackSpeed = FireRate;
 	}
 	
@@ -53,25 +50,6 @@ public class Controls : MonoBehaviour
 		ObjectRot.z = Angle;
 		this.gameObject.transform.eulerAngles = ObjectRot;
 
-// Controls ////////////////////////////////////////////
-		if (Input.GetKey (KeyCode.Mouse1) == true) 
-		{
-			ObjectPos.y += Mathf.Sin(Angle*Mathf.Deg2Rad)*Velocity;
-			ObjectPos.x += Mathf.Cos(Angle*Mathf.Deg2Rad)*Velocity;
-			//Vector3 NormalRotation = this.gameObject.transform.eulerAngles;
-			//NormalRotation.Normalize();
-			//ObjectPos += NormalRotation*Velocity*Time.deltaTime;
-			this.gameObject.transform.position = ObjectPos;
-		}
-		if (Input.GetKey (KeyCode.A))
-		{
-			Accelaration = this.gameObject.transform.right * (Time.deltaTime + MovementSpeed);
-			Moveing = true;
-		}
-		else
-		{
-			Moveing = false;
-		}
 /////////////////////////////////////////////////////////
 
 		if (Moveing == true)
