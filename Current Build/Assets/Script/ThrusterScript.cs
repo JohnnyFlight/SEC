@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ThrusterControls : MonoBehaviour 
+public class ThrusterScript : MonoBehaviour 
 {
 	Controls ParentControls;
 	public float Speed;
@@ -26,5 +26,17 @@ public class ThrusterControls : MonoBehaviour
 			ParentControls.Moveing = false;
 		}
 
+	}
+
+	void OnCollisionEnter(Collision col)
+	{
+		if (col.gameObject.tag == "Bullet") 
+		{
+			
+		} 
+		else
+		{
+			print ("thruster hit");
+		}
 	}
 }

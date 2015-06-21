@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HullScript : MonoBehaviour {
+public class WeaponsScript : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 	
 	}
 	
@@ -16,14 +17,13 @@ public class HullScript : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-
 		if (col.gameObject.tag == "Bullet") 
 		{
-				
+			
 		} 
 		else
 		{
-			print ("hull hit");
+			print ("Weapons hit");
 		}
 	}
 }

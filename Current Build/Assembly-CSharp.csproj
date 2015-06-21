@@ -58,7 +58,8 @@
      <Compile Include="Assets\Script\ResourcePickup.cs" />
      <Compile Include="Assets\Script\ShipTest.cs" />
      <Compile Include="Assets\Script\ShotMovement.cs" />
-     <Compile Include="Assets\Script\ThrusterControls.cs" />
+     <Compile Include="Assets\Script\ThrusterScript.cs" />
+     <Compile Include="Assets\Script\WeaponsScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
