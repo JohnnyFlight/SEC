@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponsScript : MonoBehaviour {
+public class WeaponsScript : MonoBehaviour 
+{
+	ShipStats ParentStats;
 
 	// Use this for initialization
 	void Start () 
 	{
-	
+		ParentStats = transform.parent.GetComponent<ShipStats>();
 	}
 	
 	// Update is called once per frame
@@ -24,6 +26,7 @@ public class WeaponsScript : MonoBehaviour {
 		else
 		{
 			print ("Weapons hit");
+			ParentStats.health -= 1;
 		}
 	}
 }

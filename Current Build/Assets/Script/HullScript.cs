@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HullScript : MonoBehaviour {
-
+public class HullScript : MonoBehaviour 
+{
+	ShipStats ParentStats;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		ParentStats = transform.parent.GetComponent<ShipStats>();
 	}
 	
 	// Update is called once per frame
@@ -24,6 +26,7 @@ public class HullScript : MonoBehaviour {
 		else
 		{
 			print ("hull hit");
+			ParentStats.health -= 1;
 		}
 	}
 }

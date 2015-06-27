@@ -4,6 +4,7 @@ using System.Collections;
 public class ThrusterScript : MonoBehaviour 
 {
 	Controls ParentControls;
+	ShipStats ParentStats;
 	public float Speed;
 	float MovementSpeed = 0f;
 	// Use this for initialization
@@ -11,6 +12,7 @@ public class ThrusterScript : MonoBehaviour
 	{
 		MovementSpeed = Speed;
 		ParentControls = transform.parent.GetComponent<Controls>();
+		ParentStats = transform.parent.GetComponent<ShipStats>();
 	}
 	
 	// Update is called once per frame
@@ -37,6 +39,7 @@ public class ThrusterScript : MonoBehaviour
 		else
 		{
 			print ("thruster hit");
+			ParentStats.health -= 1;
 		}
 	}
 }

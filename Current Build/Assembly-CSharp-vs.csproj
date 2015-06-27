@@ -56,6 +56,7 @@
      <Compile Include="Assets\Script\LevelManager.cs" />
      <Compile Include="Assets\Script\Resource.cs" />
      <Compile Include="Assets\Script\ResourcePickup.cs" />
+     <Compile Include="Assets\Script\ShipStats.cs" />
      <Compile Include="Assets\Script\ShipTest.cs" />
      <Compile Include="Assets\Script\ShotMovement.cs" />
      <Compile Include="Assets\Script\ThrusterScript.cs" />
