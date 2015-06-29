@@ -44,6 +44,21 @@ public class LevelManager : MonoBehaviour
 		//	Add pausing here
 	}
 
+	void OnGUI()
+	{
+		uint resourceNumber = (uint)System.Enum.GetValues(typeof(Resource.Type)).Length;
+
+		//	Create string
+		string values = "";
+		foreach (Resource.Type type in System.Enum.GetValues(typeof(Resource.Type)))
+		{
+			values += type.ToString() + " " + _resourceQuantities[(int)type] + "\n";
+		}
+
+		//	Make box
+		GUI.Box(new Rect(0.0f, 0.0f, 100.0f, (float)resourceNumber * 50.0f), values);
+	}
+
 	public void addResource (Resource resource)
 	{
 		_resourceQuantities[(int)resource.type] += resource.quantity;
