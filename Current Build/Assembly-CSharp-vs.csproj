@@ -50,6 +50,7 @@
      <Compile Include="Assets\Script\AsteroidManager.cs" />
      <Compile Include="Assets\Script\AsteroidPrefabs.cs" />
      <Compile Include="Assets\Script\Attractor.cs" />
+     <Compile Include="Assets\Script\BoundingBox.cs" />
      <Compile Include="Assets\Script\Controls.cs" />
      <Compile Include="Assets\Script\Gun_Controls.cs" />
      <Compile Include="Assets\Script\HullScript.cs" />
